@@ -253,4 +253,4 @@ rm backend/notes.db        # Windows: del backend\notes.db
 
 - Don't commit `backend/.env` (your key). It is gitignored — keep it that way.
 - Don't run backend and frontend in the same terminal; both must stay running.
-- Don't use Python 3.12+ for this project unless you want to debug wheels.
+- Don't use Python 3.12+ for this project.
