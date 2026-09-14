@@ -25,7 +25,18 @@ def chunk(text: str) -> list[str]:
 def fetch_url(url: str) -> str:
     """Fetch a page and extract main content (strips nav/ads/boilerplate)."""
     try:
-        resp = httpx.get(url, timeout=10.0, follow_redirects=True)
+        resp = httpx.get(
+            url,
+            timeout=10.0,
+            follow_redirects=True,
+            headers={
+                "User-Agent": (
+                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/120.0 Safari/537.36"
+                )
+            },
+        )
         resp.raise_for_status()
     except httpx.HTTPError as e:
         log.warning(f"url fetch failed: {url} ({e})")
